@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Distance Visualizer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Floating clouds -->
+    <div class="cloud cloud1"></div>
+    <div class="cloud cloud2"></div>
+    <div class="cloud cloud3"></div>
+    <div class="cloud cloud4"></div>
+    <div class="cloud cloud5"></div>
+    <div class="cloud cloud6"></div>
+    <div class="cloud cloud7"></div>
+    <div class="cloud cloud8"></div>
+    <div class="cloud cloud9"></div>
+    <div class="cloud cloud10"></div>
+    <div class="cloud cloud11"></div>
+    <div class="cloud cloud12"></div>
+
+    <div class="container">
+        <header>
+            <h1>✈️ Flight Distance Visualizer</h1>
+            <p class="subtitle">Exploring the relationship between wingspan and flight distance</p>
+        </header>
+
+        <div class="main-content">
+            <!-- Scientific Method Sidebar -->
+            <aside class="scientific-method">
+                <h2>Scientific Method</h2>
+                <div class="method-step">
+                    <h3>🔍 Observation</h3>
+                    <p>Birds and aircraft with larger wingspans tend to glide farther distances.</p>
+                </div>
+                <div class="method-step">
+                    <h3>💡 Hypothesis</h3>
+                    <p>Increasing wingspan will increase the flight distance due to greater lift generation and improved lift-to-drag ratio.</p>
+                </div>
+                <div class="method-step">
+                    <h3>🧪 Experiment</h3>
+                    <p>Test different wingspan values and measure the resulting flight distances using aerodynamic principles.</p>
+                </div>
+                <div class="method-step">
+                    <h3>📊 Analysis</h3>
+                    <p>Visualize how wingspan affects flight trajectory and maximum distance traveled.</p>
+                </div>
+                <div class="method-step">
+                    <h3>📝 Conclusion</h3>
+                    <p>Larger wingspans generate more lift, allowing for longer glide distances before landing.</p>
+                </div>
+            </aside>
+
+            <!-- Main Visualization Area -->
+            <main class="visualization-area">
+                <div class="controls">
+                    <label for="wingspan">Wingspan (meters):</label>
+                    <input type="number" id="wingspan" min="1" max="100" value="10" step="0.5">
+                    <button id="calculateBtn">Calculate Flight</button>
+                    <button id="resetBtn">Reset</button>
+                </div>
+
+                <div class="results" id="results" style="display: none;">
+                    <h3>Flight Results</h3>
+                    <p>Wingspan: <span id="wingspanDisplay">0</span>m</p>
+                    <p>Estimated Distance: <span id="distanceDisplay">0</span>m</p>
+                    <p>Maximum Height: <span id="heightDisplay">0</span>m</p>
+                    <p>Flight Time: <span id="timeDisplay">0</span>s</p>
+                </div>
+
+                <canvas id="flightCanvas"></canvas>
+
+                <div class="explanation">
+                    <h3>Why Wingspan Matters</h3>
+                    <p>
+                        <strong>Lift Generation:</strong> Larger wingspans create more surface area, generating greater lift force that keeps the aircraft aloft longer.
+                    </p>
+                    <p>
+                        <strong>Lift-to-Drag Ratio:</strong> Longer wings typically have better aerodynamic efficiency, reducing induced drag and allowing the aircraft to glide farther.
+                    </p>
+                    <p>
+                        <strong>Glide Performance:</strong> With increased lift and reduced drag, aircraft with larger wingspans can maintain altitude longer and travel greater distances.
+                    </p>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

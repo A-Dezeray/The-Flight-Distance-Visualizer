@@ -1,0 +1,616 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Garamond, 'Times New Roman', serif;
+    background: #ADD8E6;
+    min-height: 100vh;
+    padding: 20px;
+    position: relative;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 10;
+}
+
+header {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+header h1 {
+    color: #333;
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    color: #666;
+    font-size: 1.1em;
+}
+
+.main-content {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 20px;
+}
+
+/* Scientific Method Sidebar */
+.scientific-method {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    height: fit-content;
+    position: sticky;
+    top: 20px;
+}
+
+.scientific-method h2 {
+    color: #28a745;
+    margin-bottom: 20px;
+    font-size: 1.5em;
+    border-bottom: 3px solid #28a745;
+    padding-bottom: 10px;
+}
+
+.method-step {
+    margin-bottom: 20px;
+}
+
+.method-step h3 {
+    color: #333;
+    font-size: 1em;
+    margin-bottom: 8px;
+}
+
+.method-step p {
+    color: #555;
+    font-size: 0.9em;
+    line-height: 1.5;
+}
+
+/* Main Visualization Area */
+.visualization-area {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.controls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    padding: 20px;
+    background: rgba(248, 249, 250, 0.6);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.controls label {
+    font-weight: 600;
+    color: #333;
+}
+
+.controls input {
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+    width: 120px;
+}
+
+.controls input:focus {
+    outline: none;
+    border-color: #28a745;
+}
+
+.controls button {
+    padding: 10px 20px;
+    background: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.controls button:hover {
+    background: #218838;
+}
+
+#resetBtn {
+    background: #6c757d;
+}
+
+#resetBtn:hover {
+    background: #5a6268;
+}
+
+.results {
+    background: rgba(212, 237, 218, 0.7);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border-left: 4px solid #28a745;
+    border: 1px solid rgba(40, 167, 69, 0.2);
+    border-left: 4px solid #28a745;
+}
+
+.results h3 {
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.results p {
+    color: #555;
+    margin-bottom: 8px;
+    font-size: 1em;
+}
+
+.results span {
+    font-weight: 700;
+    color: #28a745;
+}
+
+/* Canvas */
+#flightCanvas {
+    width: 100%;
+    height: 500px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    background: linear-gradient(to bottom, #87CEEB 0%, #E0F6FF 50%, #90EE90 100%);
+    margin-bottom: 20px;
+    display: block;
+}
+
+/* Explanation */
+.explanation {
+    background: rgba(248, 249, 250, 0.6);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.explanation h3 {
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.explanation p {
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+.explanation strong {
+    color: #28a745;
+}
+
+/* Cloud animations */
+.cloud {
+    position: fixed;
+    background: white;
+    border-radius: 100px;
+    opacity: 0.7;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.cloud::before,
+.cloud::after {
+    content: '';
+    position: absolute;
+    background: white;
+    border-radius: 100px;
+}
+
+.cloud1 {
+    width: 100px;
+    height: 40px;
+    top: 10%;
+    animation: float1 60s infinite linear;
+}
+
+.cloud1::before {
+    width: 50px;
+    height: 50px;
+    top: -25px;
+    left: 10px;
+}
+
+.cloud1::after {
+    width: 60px;
+    height: 40px;
+    top: -15px;
+    right: 10px;
+}
+
+.cloud2 {
+    width: 120px;
+    height: 50px;
+    top: 25%;
+    animation: float2 80s infinite linear;
+}
+
+.cloud2::before {
+    width: 60px;
+    height: 60px;
+    top: -30px;
+    left: 15px;
+}
+
+.cloud2::after {
+    width: 70px;
+    height: 50px;
+    top: -20px;
+    right: 15px;
+}
+
+.cloud3 {
+    width: 90px;
+    height: 35px;
+    top: 50%;
+    animation: float3 70s infinite linear;
+}
+
+.cloud3::before {
+    width: 45px;
+    height: 45px;
+    top: -20px;
+    left: 12px;
+}
+
+.cloud3::after {
+    width: 55px;
+    height: 35px;
+    top: -15px;
+    right: 12px;
+}
+
+.cloud4 {
+    width: 110px;
+    height: 45px;
+    top: 75%;
+    animation: float4 90s infinite linear;
+}
+
+.cloud4::before {
+    width: 55px;
+    height: 55px;
+    top: -25px;
+    left: 14px;
+}
+
+.cloud4::after {
+    width: 65px;
+    height: 45px;
+    top: -18px;
+    right: 14px;
+}
+
+.cloud5 {
+    width: 85px;
+    height: 32px;
+    top: 40%;
+    animation: float5 65s infinite linear;
+}
+
+.cloud5::before {
+    width: 42px;
+    height: 42px;
+    top: -18px;
+    left: 11px;
+}
+
+.cloud5::after {
+    width: 50px;
+    height: 32px;
+    top: -12px;
+    right: 11px;
+}
+
+.cloud6 {
+    width: 95px;
+    height: 38px;
+    top: 60%;
+    animation: float6 75s infinite linear;
+}
+
+.cloud6::before {
+    width: 48px;
+    height: 48px;
+    top: -22px;
+    left: 13px;
+}
+
+.cloud6::after {
+    width: 58px;
+    height: 38px;
+    top: -16px;
+    right: 13px;
+}
+
+@keyframes float1 {
+    from {
+        left: -150px;
+    }
+    to {
+        left: 100%;
+    }
+}
+
+@keyframes float2 {
+    from {
+        left: -170px;
+    }
+    to {
+        left: 100%;
+    }
+}
+
+@keyframes float3 {
+    from {
+        left: -140px;
+    }
+    to {
+        left: 100%;
+    }
+}
+
+@keyframes float4 {
+    from {
+        left: -160px;
+    }
+    to {
+        left: 100%;
+    }
+}
+
+@keyframes float5 {
+    from {
+        left: -135px;
+    }
+    to {
+        left: 100%;
+    }
+}
+
+@keyframes float6 {
+    from {
+        left: -145px;
+    }
+    to {
+        left: 100%;
+    }
+}
+
+.cloud7 {
+    width: 105px;
+    height: 42px;
+    top: 15%;
+    animation: float7 85s infinite linear;
+}
+
+.cloud7::before {
+    width: 52px;
+    height: 52px;
+    top: -24px;
+    left: 13px;
+}
+
+.cloud7::after {
+    width: 62px;
+    height: 42px;
+    top: -17px;
+    right: 13px;
+}
+
+.cloud8 {
+    width: 80px;
+    height: 30px;
+    top: 35%;
+    animation: float8 55s infinite linear;
+}
+
+.cloud8::before {
+    width: 40px;
+    height: 40px;
+    top: -16px;
+    left: 10px;
+}
+
+.cloud8::after {
+    width: 48px;
+    height: 30px;
+    top: -10px;
+    right: 10px;
+}
+
+.cloud9 {
+    width: 115px;
+    height: 48px;
+    top: 55%;
+    animation: float9 95s infinite linear;
+}
+
+.cloud9::before {
+    width: 58px;
+    height: 58px;
+    top: -28px;
+    left: 15px;
+}
+
+.cloud9::after {
+    width: 68px;
+    height: 48px;
+    top: -21px;
+    right: 15px;
+}
+
+.cloud10 {
+    width: 92px;
+    height: 36px;
+    top: 70%;
+    animation: float10 72s infinite linear;
+}
+
+.cloud10::before {
+    width: 46px;
+    height: 46px;
+    top: -20px;
+    left: 12px;
+}
+
+.cloud10::after {
+    width: 54px;
+    height: 36px;
+    top: -14px;
+    right: 12px;
+}
+
+.cloud11 {
+    width: 88px;
+    height: 34px;
+    top: 20%;
+    animation: float11 68s infinite linear;
+}
+
+.cloud11::before {
+    width: 44px;
+    height: 44px;
+    top: -19px;
+    left: 11px;
+}
+
+.cloud11::after {
+    width: 52px;
+    height: 34px;
+    top: -13px;
+    right: 11px;
+}
+
+.cloud12 {
+    width: 98px;
+    height: 39px;
+    top: 85%;
+    animation: float12 78s infinite linear;
+}
+
+.cloud12::before {
+    width: 49px;
+    height: 49px;
+    top: -22px;
+    left: 12px;
+}
+
+.cloud12::after {
+    width: 57px;
+    height: 39px;
+    top: -16px;
+    right: 12px;
+}
+
+@keyframes float7 {
+    from {
+        left: -155px;
+    }
+    to {
+        left: 100%;
+    }
+}
+
+@keyframes float8 {
+    from {
+        left: -130px;
+    }
+    to {
+        left: 100%;
+    }
+}
+
+@keyframes float9 {
+    from {
+        left: -165px;
+    }
+    to {
+        left: 100%;
+    }
+}
+
+@keyframes float10 {
+    from {
+        left: -142px;
+    }
+    to {
+        left: 100%;
+    }
+}
+
+@keyframes float11 {
+    from {
+        left: -138px;
+    }
+    to {
+        left: 100%;
+    }
+}
+
+@keyframes float12 {
+    from {
+        left: -148px;
+    }
+    to {
+        left: 100%;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 968px) {
+    .main-content {
+        grid-template-columns: 1fr;
+    }
+
+    .scientific-method {
+        position: relative;
+        top: 0;
+    }
+
+    header h1 {
+        font-size: 2em;
+    }
+
+    .controls {
+        flex-wrap: wrap;
+    }
+}
