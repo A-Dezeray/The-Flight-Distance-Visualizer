@@ -3,27 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Visualize how airplane wingspan affects flight distance using aerodynamic principles. An interactive tool exploring lift, drag, and glide performance.">
     <title>Flight Distance Visualizer</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✈️</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <!-- Floating clouds -->
-    <div class="cloud cloud1"></div>
-    <div class="cloud cloud2"></div>
-    <div class="cloud cloud3"></div>
-    <div class="cloud cloud4"></div>
-    <div class="cloud cloud5"></div>
-    <div class="cloud cloud6"></div>
-    <div class="cloud cloud7"></div>
-    <div class="cloud cloud8"></div>
-    <div class="cloud cloud9"></div>
-    <div class="cloud cloud10"></div>
-    <div class="cloud cloud11"></div>
-    <div class="cloud cloud12"></div>
+    <div class="cloud" style="--cw:100px;--ch:40px;--ct:10%;--cd:60s;--start:-150px;--bw:50px;--bh:50px;--bt:-25px;--bl:10px;--aw:60px;--ah:40px;--at:-15px;--ar:10px"></div>
+    <div class="cloud" style="--cw:120px;--ch:50px;--ct:25%;--cd:80s;--start:-170px;--bw:60px;--bh:60px;--bt:-30px;--bl:15px;--aw:70px;--ah:50px;--at:-20px;--ar:15px"></div>
+    <div class="cloud" style="--cw:90px;--ch:35px;--ct:50%;--cd:70s;--start:-140px;--bw:45px;--bh:45px;--bt:-20px;--bl:12px;--aw:55px;--ah:35px;--at:-15px;--ar:12px"></div>
+    <div class="cloud" style="--cw:110px;--ch:45px;--ct:75%;--cd:90s;--start:-160px;--bw:55px;--bh:55px;--bt:-25px;--bl:14px;--aw:65px;--ah:45px;--at:-18px;--ar:14px"></div>
+    <div class="cloud" style="--cw:85px;--ch:32px;--ct:40%;--cd:65s;--start:-135px;--bw:42px;--bh:42px;--bt:-18px;--bl:11px;--aw:50px;--ah:32px;--at:-12px;--ar:11px"></div>
+    <div class="cloud" style="--cw:95px;--ch:38px;--ct:60%;--cd:75s;--start:-145px;--bw:48px;--bh:48px;--bt:-22px;--bl:13px;--aw:58px;--ah:38px;--at:-16px;--ar:13px"></div>
+    <div class="cloud" style="--cw:105px;--ch:42px;--ct:15%;--cd:85s;--start:-155px;--bw:52px;--bh:52px;--bt:-24px;--bl:13px;--aw:62px;--ah:42px;--at:-17px;--ar:13px"></div>
+    <div class="cloud" style="--cw:80px;--ch:30px;--ct:35%;--cd:55s;--start:-130px;--bw:40px;--bh:40px;--bt:-16px;--bl:10px;--aw:48px;--ah:30px;--at:-10px;--ar:10px"></div>
+    <div class="cloud" style="--cw:115px;--ch:48px;--ct:55%;--cd:95s;--start:-165px;--bw:58px;--bh:58px;--bt:-28px;--bl:15px;--aw:68px;--ah:48px;--at:-21px;--ar:15px"></div>
+    <div class="cloud" style="--cw:92px;--ch:36px;--ct:70%;--cd:72s;--start:-142px;--bw:46px;--bh:46px;--bt:-20px;--bl:12px;--aw:54px;--ah:36px;--at:-14px;--ar:12px"></div>
+    <div class="cloud" style="--cw:88px;--ch:34px;--ct:20%;--cd:68s;--start:-138px;--bw:44px;--bh:44px;--bt:-19px;--bl:11px;--aw:52px;--ah:34px;--at:-13px;--ar:11px"></div>
+    <div class="cloud" style="--cw:98px;--ch:39px;--ct:85%;--cd:78s;--start:-148px;--bw:49px;--bh:49px;--bt:-22px;--bl:12px;--aw:57px;--ah:39px;--at:-16px;--ar:12px"></div>
 
     <div class="container">
         <header>
-            <h1>✈️ Flight Distance Visualizer</h1>
+            <h1>Flight Distance Visualizer</h1>
             <p class="subtitle">Exploring the relationship between wingspan and flight distance</p>
         </header>
 
@@ -32,23 +37,23 @@
             <aside class="scientific-method">
                 <h2>Scientific Method</h2>
                 <div class="method-step">
-                    <h3>🔍 Observation</h3>
+                    <h3>Observation</h3>
                     <p>Birds and aircraft with larger wingspans tend to glide farther distances.</p>
                 </div>
                 <div class="method-step">
-                    <h3>💡 Hypothesis</h3>
+                    <h3>Hypothesis</h3>
                     <p>Increasing wingspan will increase the flight distance due to greater lift generation and improved lift-to-drag ratio.</p>
                 </div>
                 <div class="method-step">
-                    <h3>🧪 Experiment</h3>
+                    <h3>Experiment</h3>
                     <p>Test different wingspan values and measure the resulting flight distances using aerodynamic principles.</p>
                 </div>
                 <div class="method-step">
-                    <h3>📊 Analysis</h3>
+                    <h3>Analysis</h3>
                     <p>Visualize how wingspan affects flight trajectory and maximum distance traveled.</p>
                 </div>
                 <div class="method-step">
-                    <h3>📝 Conclusion</h3>
+                    <h3>Conclusion</h3>
                     <p>Larger wingspans generate more lift, allowing for longer glide distances before landing.</p>
                 </div>
             </aside>
@@ -59,7 +64,10 @@
                     <label for="wingspan">Wingspan (meters):</label>
                     <input type="number" id="wingspan" min="1" max="100" value="10" step="0.5">
                     <button id="calculateBtn">Calculate Flight</button>
+                    <button id="compareBtn" title="Toggle comparison mode">Compare</button>
                     <button id="resetBtn">Reset</button>
+                    <button id="clearAllBtn" title="Clear all comparison data" style="display:none;">Clear All</button>
+                    <span class="error-message" id="errorMessage"></span>
                 </div>
 
                 <div class="results" id="results" style="display: none;">
@@ -71,6 +79,11 @@
                 </div>
 
                 <canvas id="flightCanvas"></canvas>
+
+                <div class="comparison-legend" id="comparisonLegend" style="display: none;">
+                    <h4>Comparison Legend</h4>
+                    <div id="legendItems"></div>
+                </div>
 
                 <div class="explanation">
                     <h3>Why Wingspan Matters</h3>
