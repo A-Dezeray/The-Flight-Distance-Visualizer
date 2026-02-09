@@ -5,11 +5,11 @@ const FONT_FAMILY = '"EB Garamond", Garamond, serif';
 
 // Set canvas size
 function resizeCanvas() {
-    canvas.width = canvas.offsetWidth;
-    canvas.height = canvas.offsetHeight;
+    const rect = canvas.getBoundingClientRect();
+    canvas.width = rect.width;
+    canvas.height = rect.height;
     redrawCanvas();
 }
-resizeCanvas();
 window.addEventListener('resize', resizeCanvas);
 
 // Flight data
@@ -474,6 +474,9 @@ calculateBtn.addEventListener('click', () => {
     }
 
     // Start animation
+    const rect = canvas.getBoundingClientRect();
+    canvas.width = rect.width;
+    canvas.height = rect.height;
     animationProgress = 0;
     isAnimating = true;
     animate();
@@ -509,9 +512,12 @@ clearAllBtn.addEventListener('click', () => {
     redrawCanvas();
 });
 
-// Initial draw (wait for web font)
-document.fonts.ready.then(() => {
-    if (!isAnimating && animationProgress === 0) {
-        redrawCanvas();
-    }
+// Initial draw (wait for layout + web font)
+window.addEventListener('load', () => {
+    resizeCanvas();
+    document.fonts.ready.then(() => {
+        if (!isAnimating && animationProgress === 0) {
+            redrawCanvas();
+        }
+    });
 });
